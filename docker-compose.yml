@@ -1,0 +1,75 @@
+services:
+  samba-ad:
+    image: diegogslomp/samba-ad-dc
+    container_name: samba-ad
+    hostname: dc1
+    privileged: true
+    environment:
+      REALM: EXAMPLE.LOCAL
+      DOMAIN: EXAMPLE
+      ADMIN_PASS: Passw0rd!
+      DNS_FORWARDER: 8.8.8.8
+      BIND_NETWORK_INTERFACES: "false"
+    ports:
+      - "389:389"
+      - "636:636"
+      - "88:88"
+    volumes:
+      - samba_data:/usr/local/samba
+
+  ad-init:
+    image: docker:cli
+    depends_on:
+      - samba-ad
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: >
+      sh -c "
+      sleep 10 &&
+      docker exec samba-ad samba-tool user create testuser 'Passw0rd!' || true
+      "
+
+  app:
+    build:
+      context: .
+      dockerfile: src/app/Dockerfile
+    container_name: app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - samba-ad
+
+  agent:
+    build:
+      context: .
+      dockerfile: src/agent/Dockerfile
+    container_name: agent
+    depends_on:
+      - app
+      - samba-ad
+    environment:
+      APP_WS_URL: ws://app:5000
+      LDAP_URL: ldaps://samba-ad:636
+      LDAP_BIND_DN: Administrator@EXAMPLE.LOCAL
+      LDAP_BIND_PASSWORD: Passw0rd!
+      LDAP_BASE_DN: dc=example,dc=local
+      KRB_REALM: EXAMPLE.LOCAL
+      KRB_SERVICE: ldap/dc1.example.local
+      KRB5_CONFIG: /etc/krb5.conf
+    volumes:
+      - ./krb5.conf:/etc/krb5.conf
+
+  client:
+    command: sh -c "sleep 20 && node dist/client/client.js"
+    build:
+      context: .
+      dockerfile: src/client/Dockerfile
+    container_name: client
+    depends_on:
+      - agent
+      - ad-init
+    environment:
+      APP_WS_URL: ws://app:5000
+
+volumes:
+  samba_data:
