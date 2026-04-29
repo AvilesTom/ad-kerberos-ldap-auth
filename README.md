@@ -1,13 +1,13 @@
-# 🔐 Kerberos + LDAP Authentication Proxy (AD Demo)
-
-## 📌 Overview
+#  Kerberos + LDAP Authentication Proxy (AD Demo)
+This is a fully recreated demo project for learning/portfolio purposes. It does not contain proprietary code, internal infrastructure, or production configuration.
+##  Overview
 
 This project demonstrates a **secure authentication architecture** for clients using:
 
 * **Kerberos** → Authentication
 * **LDAP** → User & group lookup
 * **JWT** → Session management
-* **WebSockets (TCMS)** → Communication layer
+* **WebSockets (App)** → Communication layer
 * **End-to-End Encryption (E2E)** → Secure client ↔ agent channel
 * **Docker Compose** → Full environment orchestration
 
@@ -15,17 +15,17 @@ The system simulates a **real enterprise setup** where users authenticate agains
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
-Client  →  TCMS  →  Agent  →  Active Directory
+Client  →  App  →  Agent  →  Active Directory
                       │
               (Kerberos + LDAP)
 ```
 
 ---
 
-## 🔄 Data Flow (Authentication Flow)
+##  Data Flow (Authentication Flow)
 
 ### 1. Connection & Registration
 
@@ -55,7 +55,7 @@ Client  →  TCMS  →  Agent  →  Active Directory
 ### 4. Kerberos Authentication
 
 * Agent validates credentials using **Kerberos**
-* No password is sent over the network in plain text
+* Credentials are protected in transit using the E2E channel and are never persisted.
 
 ---
 
@@ -96,9 +96,9 @@ Client  →  TCMS  →  Agent  →  Active Directory
 
 ---
 
-## 🧩 Components
+##  Components
 
-### 🖥️ Client
+###  Client
 
 * Simulates a client in an enterprise
 * Establishes encrypted communication
@@ -106,7 +106,7 @@ Client  →  TCMS  →  Agent  →  Active Directory
 
 ---
 
-### 🌐 App (Central Server)
+###  App (Central Server)
 
 * WebSocket relay between client and agent
 * Routes messages securely
@@ -114,7 +114,7 @@ Client  →  TCMS  →  Agent  →  Active Directory
 
 ---
 
-### ⚙️ Agent
+###  Agent
 
 * Core security component (designed as an on premise agent)
 * Handles:
@@ -126,7 +126,7 @@ Client  →  TCMS  →  Agent  →  Active Directory
 
 ---
 
-### 🏢 Active Directory (Samba AD)
+###  Active Directory (Samba AD)
 
 * Provides:
 
@@ -136,7 +136,7 @@ Client  →  TCMS  →  Agent  →  Active Directory
 
 ---
 
-## 🖥️ Example Output
+##  Example Output
 
 ### Successful Authentication
 
@@ -172,7 +172,7 @@ Client  →  TCMS  →  Agent  →  Active Directory
 
 ---
 
-## ⚙️ Setup & Run
+##  Setup & Run
 
 ### Requirements
 
@@ -200,7 +200,7 @@ Password: Passw0rd!
 
 ---
 
-## 🔐 Security Features
+##  Security Features
 
 * End-to-End encrypted communication
 * Kerberos-based authentication (no plaintext passwords)
@@ -210,7 +210,7 @@ Password: Passw0rd!
 
 ---
 
-## 🎯 Key Design Decisions
+##  Key Design Decisions
 
 | Component | Reason                             |
 | --------- | ---------------------------------- |
@@ -222,11 +222,11 @@ Password: Passw0rd!
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ![Architecture Diagram](docs/Diagramm.png)
 
-## 🚀 Future Improvements
+##  Future Improvements
 
 * Token refresh mechanism
 * TLS (LDAPS / HTTPS)
@@ -235,7 +235,7 @@ Password: Passw0rd!
 
 ---
 
-## 📖 Summary
+##  Summary
 
 This project demonstrates how to:
 
@@ -246,6 +246,6 @@ This project demonstrates how to:
 
 ---
 
-## 👤 Author
+## Author
 
 Tom Avilés
