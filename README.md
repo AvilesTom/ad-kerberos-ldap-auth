@@ -7,7 +7,7 @@ This project demonstrates a **secure authentication architecture** for clients u
 * **Kerberos** → Authentication
 * **LDAP** → User & group lookup
 * **JWT** → Session management
-* **WebSockets (TCMS)** → Communication layer
+* **WebSockets (App)** → Communication layer
 * **End-to-End Encryption (E2E)** → Secure client ↔ agent channel
 * **Docker Compose** → Full environment orchestration
 
@@ -18,7 +18,7 @@ The system simulates a **real enterprise setup** where users authenticate agains
 ##  Architecture
 
 ```
-Client  →  TCMS  →  Agent  →  Active Directory
+Client  →  App  →  Agent  →  Active Directory
                       │
               (Kerberos + LDAP)
 ```
