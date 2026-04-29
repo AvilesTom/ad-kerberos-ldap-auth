@@ -1,4 +1,5 @@
 #  Kerberos + LDAP Authentication Proxy (AD Demo)
+A demo project showcasing how a cloud service can **securely authenticate** users against an on-premise Active Directory using a WebSocket-based proxy architecture.
 This is a fully recreated demo project for learning/portfolio purposes. It does not contain proprietary code, internal infrastructure, or production configuration.
 ##  Overview
 
