@@ -1,6 +1,6 @@
-# 🔐 Kerberos + LDAP Authentication Proxy (AD Demo)
+#  Kerberos + LDAP Authentication Proxy (AD Demo)
 
-## 📌 Overview
+##  Overview
 
 This project demonstrates a **secure authentication architecture** for clients using:
 
@@ -15,7 +15,7 @@ The system simulates a **real enterprise setup** where users authenticate agains
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 Client  →  TCMS  →  Agent  →  Active Directory
@@ -25,7 +25,7 @@ Client  →  TCMS  →  Agent  →  Active Directory
 
 ---
 
-## 🔄 Data Flow (Authentication Flow)
+##  Data Flow (Authentication Flow)
 
 ### 1. Connection & Registration
 
@@ -96,9 +96,9 @@ Client  →  TCMS  →  Agent  →  Active Directory
 
 ---
 
-## 🧩 Components
+##  Components
 
-### 🖥️ Client
+###  Client
 
 * Simulates a client in an enterprise
 * Establishes encrypted communication
@@ -106,7 +106,7 @@ Client  →  TCMS  →  Agent  →  Active Directory
 
 ---
 
-### 🌐 App (Central Server)
+###  App (Central Server)
 
 * WebSocket relay between client and agent
 * Routes messages securely
@@ -114,7 +114,7 @@ Client  →  TCMS  →  Agent  →  Active Directory
 
 ---
 
-### ⚙️ Agent
+###  Agent
 
 * Core security component (designed as an on premise agent)
 * Handles:
@@ -126,7 +126,7 @@ Client  →  TCMS  →  Agent  →  Active Directory
 
 ---
 
-### 🏢 Active Directory (Samba AD)
+###  Active Directory (Samba AD)
 
 * Provides:
 
@@ -136,7 +136,7 @@ Client  →  TCMS  →  Agent  →  Active Directory
 
 ---
 
-## 🖥️ Example Output
+##  Example Output
 
 ### Successful Authentication
 
@@ -172,7 +172,7 @@ Client  →  TCMS  →  Agent  →  Active Directory
 
 ---
 
-## ⚙️ Setup & Run
+##  Setup & Run
 
 ### Requirements
 
@@ -200,7 +200,7 @@ Password: Passw0rd!
 
 ---
 
-## 🔐 Security Features
+##  Security Features
 
 * End-to-End encrypted communication
 * Kerberos-based authentication (no plaintext passwords)
@@ -210,7 +210,7 @@ Password: Passw0rd!
 
 ---
 
-## 🎯 Key Design Decisions
+##  Key Design Decisions
 
 | Component | Reason                             |
 | --------- | ---------------------------------- |
@@ -222,11 +222,11 @@ Password: Passw0rd!
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ![Architecture Diagram](docs/Diagramm.png)
 
-## 🚀 Future Improvements
+##  Future Improvements
 
 * Token refresh mechanism
 * TLS (LDAPS / HTTPS)
@@ -235,7 +235,7 @@ Password: Passw0rd!
 
 ---
 
-## 📖 Summary
+##  Summary
 
 This project demonstrates how to:
 
@@ -246,6 +246,6 @@ This project demonstrates how to:
 
 ---
 
-## 👤 Author
+## Author
 
 Tom Avilés
