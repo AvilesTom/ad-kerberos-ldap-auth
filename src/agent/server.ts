@@ -10,6 +10,7 @@ import {
 import crypto from 'node:crypto';
 import  { Client } from 'ldapts';
 import kerberos from'kerberos';
+import * as process from "node:process";
 
 //This agent server solver 4 principal things:
 // 1- Connects to application
