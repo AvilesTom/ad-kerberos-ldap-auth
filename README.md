@@ -1,5 +1,5 @@
 #  Kerberos + LDAP Authentication Proxy (AD Demo)
-
+This is a fully recreated demo project for learning/portfolio purposes. It does not contain proprietary code, internal infrastructure, or production configuration.
 ##  Overview
 
 This project demonstrates a **secure authentication architecture** for clients using:
@@ -55,7 +55,7 @@ Client  →  App  →  Agent  →  Active Directory
 ### 4. Kerberos Authentication
 
 * Agent validates credentials using **Kerberos**
-* No password is sent over the network in plain text
+* Credentials are protected in transit using the E2E channel and are never persisted.
 
 ---
 
