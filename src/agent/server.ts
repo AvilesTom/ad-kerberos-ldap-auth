@@ -47,8 +47,8 @@ type LdapUser = {
 
 //LDAP CONNECTION CONFIG
 const LDAP_URL = process.env.LDAP_URL ?? 'ldap://localhost:389';
-const LDAP_BIND_DN = 'Administrator@EXAMPLE.LOCAL';
-const LDAP_BIND_PASSWORD = 'Passw0rd!';
+const LDAP_BIND_DN = process.env.LDAP_BIND_DN ?? '';
+const LDAP_BIND_PASSWORD = process.env.LDAP_BIND_PASSWORD;
 const LDAP_USER_SEARCH_BASE = 'dc=example,dc=local';
 const LDAP_USER_FILER = '(sAMAccountName={{username}})';
 
